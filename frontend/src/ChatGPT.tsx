@@ -40,7 +40,7 @@ const ChatGPT = () => {
         { role: "user", content: input || prompt },
       ];
   
-      const result = await axios.post('http://localhost:4000/api/chat', { messages });
+      const result = await axios.post('/api/chat', { messages });
       setResponse(result.data.content);
     } catch (error) {
       console.error('Error fetching GPT-3 response:', error);
