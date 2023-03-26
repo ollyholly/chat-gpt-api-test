@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Button, Container, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
+import {
+  Button,
+  Container,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+  Typography,
+} from '@mui/material';
 import styled from 'styled-components';
 
 const ResponseBox = styled.div`
@@ -11,7 +20,7 @@ const ResponseBox = styled.div`
 `;
 
 const today = new Date();
-const day = today.getDate(); 
+const day = today.getDate();
 const month = today.getMonth() + 1;
 
 const ChatGPT = () => {
@@ -36,10 +45,8 @@ const ChatGPT = () => {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
-      const messages = [
-        { role: "user", content: input || prompt },
-      ];
-  
+      const messages = [{ role: 'user', content: input || prompt }];
+
       const result = await axios.post('/api/chat', { messages });
       setResponse(result.data.content);
     } catch (error) {
@@ -47,8 +54,6 @@ const ChatGPT = () => {
       setResponse('An error occurred.');
     }
   };
-  
-
 
   return (
     <Container maxWidth="sm">
